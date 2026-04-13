@@ -1,2 +1,0 @@
-@SOULCRACK
-username api bot = @API_registrations_bot

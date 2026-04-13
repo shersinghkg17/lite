@@ -1,0 +1,28 @@
+name: soul
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  build_and_run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        job: [1]
+          
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+
+      - name: Prepare and Run Soul Script 🚀
+        timeout-minutes: 240 
+        run: |
+          echo "Starting job ${{ matrix.job }}"
+          pip install python-telegram-bot==20.7 PyGithub asyncio --break-system-packages
+          python3 SOULCRACK.py
+          echo "Job ${{ matrix.job }} finished"
